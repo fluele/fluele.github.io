@@ -1145,6 +1145,24 @@
             fill: var(--cockpit-glow);
         }
 
+        .footer-credits {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.3);
+            margin-bottom: 0.8rem;
+            line-height: 1.8;
+        }
+
+        .footer-credits a {
+            color: var(--cockpit-glow);
+            text-decoration: none;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-credits a:hover {
+            opacity: 1;
+        }
+
         .copyright {
             font-family: var(--font-mono);
             font-size: 0.75rem;
@@ -1681,6 +1699,12 @@
 <a class="footer-link" href="https://lit.link/fuluele" target="_blank" title="Lit.link">
 <i class="fas fa-link"></i>
 </a>
+</div>
+
+<div class="footer-credits">
+音声合成：Style-Bert-VITS2<br>
+音声素材元：<a href="https://amitaro.net/" target="_blank" rel="noopener noreferrer">あみたろの声素材工房</a><br>
+（使用モデル：amitaro / koharune-ami）
 </div>
 
 <p class="copyright">© 2025 FULLELE / HOSHIMEGURI SISTERS // ALL SYSTEMS NOMINAL</p>
