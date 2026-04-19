@@ -1568,6 +1568,162 @@
         }
 
         /* ========================================
+           プロダクトセクション
+           ======================================== */
+        .products-section {
+            padding: 4rem 2rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background: rgba(10, 10, 18, 0.8);
+            border: 2px solid var(--cockpit-border);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: attr(data-status);
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-family: var(--font-tech);
+            font-size: 0.65rem;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            letter-spacing: 0.1em;
+            z-index: 10;
+        }
+
+        .product-card[data-status="AVAILABLE"]::before {
+            background: rgba(0, 255, 136, 0.2);
+            border: 1px solid var(--alert-green);
+            color: var(--alert-green);
+        }
+
+        .product-card[data-status="COMING SOON"]::before {
+            background: rgba(255, 107, 53, 0.2);
+            border: 1px solid var(--alert-orange);
+            color: var(--alert-orange);
+        }
+
+        .product-card:hover {
+            border-color: var(--cockpit-glow);
+            box-shadow: 0 0 40px var(--cockpit-glow-dim);
+            transform: translateY(-5px);
+        }
+
+        .product-visual {
+            width: 100%;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            border-bottom: 2px solid var(--cockpit-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .product-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-visual img {
+            transform: scale(1.05);
+        }
+
+        .product-visual-placeholder {
+            font-family: var(--font-tech);
+            font-size: 2rem;
+            color: var(--cockpit-glow);
+            text-align: center;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-family: var(--font-tech);
+            font-size: 1.2rem;
+            color: var(--cockpit-glow);
+            margin-bottom: 0.3rem;
+            letter-spacing: 0.05em;
+        }
+
+        .product-subtitle {
+            font-family: var(--font-tech);
+            font-size: 0.7rem;
+            color: rgba(255, 255, 255, 0.4);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .product-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-tag {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            padding: 0.3rem 0.6rem;
+            background: rgba(0, 255, 255, 0.08);
+            border: 1px solid var(--cockpit-border);
+            border-radius: 4px;
+            color: var(--cockpit-glow);
+        }
+
+        .product-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: var(--font-tech);
+            font-size: 0.85rem;
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--cockpit-glow);
+            border-radius: 8px;
+            color: var(--cockpit-glow);
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .product-link:hover {
+            background: var(--cockpit-glow);
+            color: #000;
+            box-shadow: 0 5px 20px var(--cockpit-glow-dim);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ========================================
            ギャラリー拡張
            ======================================== */
         .gallery-grid.expanded {
@@ -1671,6 +1827,7 @@
 <li><a href="#crew">Crew</a></li>
 <li><a href="#log">Log</a></li>
 <li><a href="#latest">Latest</a></li>
+<li><a href="#products">Products</a></li>
 <li><a href="#archive">Archive</a></li>
 <li><a href="#protocol">Protocol</a></li>
 </ul>
@@ -2115,6 +2272,55 @@
 <a href="https://www.youtube.com/@Hoshimeguri-Kotoha" target="_blank">
 <i class="fab fa-youtube"></i> チャンネルを見る
 </a>
+</div>
+</section>
+<!-- プロダクトセクション -->
+<section class="products-section" id="products">
+<div class="section-header">
+<h2 class="section-title"><i class="fas fa-rocket"></i> PRODUCTS</h2>
+</div>
+<div class="products-grid">
+<div class="product-card" data-status="AVAILABLE">
+<div class="product-visual">
+<div class="product-visual-placeholder">🖥️<br>AI Partner OS</div>
+</div>
+<div class="product-info">
+<div class="product-title">AI Partner OS</div>
+<div class="product-subtitle">Desktop AI Partner Application</div>
+<p class="product-desc">
+AIパートナーと暮らすデスクトップOS風アプリ。AIとチャットしたり、タスク管理やカレンダー、メモ帳など日常に役立つ機能を搭載。無料で配布中。
+</p>
+<div class="product-tags">
+<span class="product-tag">無料</span>
+<span class="product-tag">Windows</span>
+<span class="product-tag">ローカルLLM対応</span>
+<span class="product-tag">API対応</span>
+</div>
+<a class="product-link" href="https://fluele.booth.pm/" target="_blank">
+<i class="fas fa-store"></i> BOOTHで入手
+</a>
+</div>
+</div>
+<div class="product-card" data-status="COMING SOON">
+<div class="product-visual">
+<div class="product-visual-placeholder">⚔️<br>Line of Command</div>
+</div>
+<div class="product-info">
+<div class="product-title">Line of Command</div>
+<div class="product-subtitle">Strategy Game on Steam</div>
+<p class="product-desc">
+ユニットに線を引いて指揮するストラテジーゲーム。世界地図を舞台に、陸海空軍を操り勝利を掴め。Steamで発売予定。
+</p>
+<div class="product-tags">
+<span class="product-tag">Steam</span>
+<span class="product-tag">ストラテジー</span>
+<span class="product-tag">開発中</span>
+</div>
+<a class="product-link" href="https://store.steampowered.com/" target="_blank" style="border-color: var(--alert-orange); color: var(--alert-orange);">
+<i class="fab fa-steam"></i> Coming Soon
+</a>
+</div>
+</div>
 </div>
 </section>
 <!-- ギャラリーセクション -->
