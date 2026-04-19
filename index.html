@@ -1267,12 +1267,52 @@
                 font-size: 2rem;
             }
             
+            .crew-section {
+                padding: 2rem 0.8rem;
+            }
+            
             .crew-card {
                 grid-template-columns: 1fr;
+                padding: 1rem;
+                gap: 1rem;
+                margin-left: 0;
+                margin-right: 0;
+                box-sizing: border-box;
+                width: 100%;
+            }
+            
+            .crew-card::before {
+                position: relative;
+                top: 0;
+                left: 0;
+                display: block;
+                margin-bottom: 0.5rem;
             }
             
             .crew-card:nth-child(even) {
                 direction: ltr;
+            }
+            
+            .crew-card:nth-child(even) > * {
+                direction: ltr;
+            }
+            
+            .crew-display {
+                max-width: 100%;
+                overflow: hidden;
+            }
+            
+            .crew-monitor {
+                max-height: none;
+            }
+            
+            .display-tabs {
+                justify-content: center;
+            }
+            
+            .display-tab {
+                font-size: 0.65rem;
+                padding: 0.4rem 0.8rem;
             }
             
             .protocol-cards {
