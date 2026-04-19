@@ -1297,6 +1297,312 @@
             }
         }
     
+        /* ========================================
+           ABOUTセクション
+           ======================================== */
+        .about-section {
+            padding: 4rem 2rem;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        .about-visual {
+            border: 2px solid var(--cockpit-border);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .about-visual::before {
+            content: 'VISUAL SCAN';
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-family: var(--font-tech);
+            font-size: 0.6rem;
+            color: var(--cockpit-glow);
+            z-index: 10;
+            letter-spacing: 0.2em;
+        }
+
+        .about-visual:hover {
+            border-color: var(--cockpit-glow);
+            box-shadow: 0 0 40px var(--cockpit-glow-dim);
+        }
+
+        .about-visual img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .about-visual:hover img {
+            transform: scale(1.02);
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .about-catchcopy {
+            font-size: 1.6rem;
+            font-weight: 700;
+            line-height: 1.6;
+            background: linear-gradient(135deg, var(--cockpit-glow), var(--kotoha-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-desc {
+            color: rgba(255, 255, 255, 0.75);
+            font-size: 1rem;
+            line-height: 2;
+        }
+
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .about-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-left: 3px solid var(--cockpit-glow);
+            border-radius: 0 5px 5px 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            transition: all 0.3s ease;
+        }
+
+        .about-feature:hover {
+            background: rgba(0, 255, 255, 0.08);
+            border-left-color: var(--alert-green);
+        }
+
+        .about-feature i {
+            color: var(--cockpit-glow);
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* ========================================
+           航海ログ（タイムライン）
+           ======================================== */
+        .voyage-section {
+            padding: 4rem 2rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 700px;
+            margin: 2rem auto 0;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--cockpit-glow), var(--kotoha-color), var(--kanade-color), var(--cockpit-glow));
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.2rem 1.5rem;
+            background: rgba(10, 10, 18, 0.8);
+            border: 1px solid var(--cockpit-border);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 1.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--cockpit-glow);
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--cockpit-glow);
+        }
+
+        .timeline-item:hover {
+            border-color: var(--cockpit-glow);
+            box-shadow: 0 0 25px var(--cockpit-glow-dim);
+            transform: translateX(5px);
+        }
+
+        .timeline-date {
+            font-family: var(--font-tech);
+            font-size: 0.7rem;
+            color: var(--cockpit-glow);
+            letter-spacing: 0.15em;
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: #fff;
+        }
+
+        .timeline-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+        }
+
+        /* ========================================
+           最新動画セクション
+           ======================================== */
+        .latest-section {
+            padding: 4rem 2rem;
+        }
+
+        .latest-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .latest-embed {
+            border: 2px solid var(--cockpit-border);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .latest-embed::before {
+            content: attr(data-label);
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            font-family: var(--font-tech);
+            font-size: 0.65rem;
+            color: var(--cockpit-glow);
+            background: var(--cockpit-dark);
+            padding: 0 10px;
+            letter-spacing: 0.2em;
+            z-index: 10;
+        }
+
+        .latest-embed:hover {
+            border-color: var(--cockpit-glow);
+            box-shadow: 0 0 30px var(--cockpit-glow-dim);
+        }
+
+        .latest-embed iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            display: block;
+            border: none;
+        }
+
+        .latest-cta {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .latest-cta a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: var(--font-tech);
+            font-size: 0.9rem;
+            color: #ff0000;
+            border: 2px solid #ff0000;
+            padding: 0.8rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+
+        .latest-cta a:hover {
+            background: #ff0000;
+            color: #000;
+            box-shadow: 0 5px 25px rgba(255, 0, 0, 0.4);
+            transform: translateY(-3px);
+        }
+
+        /* ========================================
+           ギャラリー拡張
+           ======================================== */
+        .gallery-grid.expanded {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+        }
+
+        .gallery-monitor.wide {
+            grid-column: span 2;
+        }
+
+        .gallery-monitor.tall {
+            grid-row: span 2;
+        }
+
+        /* ========================================
+           レスポンシブ追加
+           ======================================== */
+        @media (max-width: 1024px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .latest-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-features {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid.expanded {
+                grid-template-columns: 1fr;
+            }
+            .gallery-monitor.wide,
+            .gallery-monitor.tall {
+                grid-column: auto;
+                grid-row: auto;
+            }
+            .about-catchcopy {
+                font-size: 1.2rem;
+            }
+            .timeline {
+                padding-left: 30px;
+            }
+            .timeline::before {
+                left: 10px;
+            }
+            .timeline-item::before {
+                left: -28px;
+            }
+        }
+
         .blueprint-note{
             font-family: var(--font-jp);
             font-size: 0.85rem;
@@ -1343,7 +1649,10 @@
 </div>
 <ul class="hud-links">
 <li><a href="#bridge">Bridge</a></li>
+<li><a href="#about">About</a></li>
 <li><a href="#crew">Crew</a></li>
+<li><a href="#log">Log</a></li>
+<li><a href="#latest">Latest</a></li>
 <li><a href="#archive">Archive</a></li>
 <li><a href="#protocol">Protocol</a></li>
 </ul>
@@ -1360,11 +1669,11 @@
 </nav>
 <!-- サイドパネル -->
 <div class="side-panel-left">
-<a class="panel-button" href="https://www.twitch.tv/kotohahosimeguri925" target="_blank" title="Twitch">
-<i class="fab fa-twitch"></i>
-</a>
 <a class="panel-button" href="https://www.youtube.com/@Hoshimeguri-Kotoha" target="_blank" title="YouTube">
 <i class="fab fa-youtube"></i>
+</a>
+<a class="panel-button" href="https://www.twitch.tv/kotohahosimeguri925" target="_blank" title="Twitch">
+<i class="fab fa-twitch"></i>
 </a>
 <a class="panel-button" href="https://x.com/meguri_kotoha" target="_blank" title="X">
 <!-- X (Twitter) SVGアイコン -->
@@ -1374,9 +1683,6 @@
 </a>
 <a class="panel-button" href="https://note.com/fluere_alpha" target="_blank" title="note">
 <i class="fas fa-book"></i>
-</a>
-<a class="panel-button" href="https://lit.link/fuluele" target="_blank" title="Lit.link">
-<i class="fas fa-link"></i>
 </a>
 </div>
 
@@ -1399,7 +1705,7 @@
 </div>
 </div>
 <h1 class="bridge-title">HOSHIMEGURI SISTERS</h1>
-<p class="bridge-subtitle">AIが紡ぐ、星を巡る姉妹の物語</p>
+<p class="bridge-subtitle">AIが自ら考え、話し、歌う ── 完全AI駆動のVTuber姉妹</p>
 <div class="crew-info-panel">
 <div>
 <div class="commander-label">Ship Commander</div>
@@ -1407,13 +1713,13 @@
 </div>
 </div>
 <div class="control-panel">
-<a class="control-btn twitch" href="https://www.twitch.tv/kotohahosimeguri925" target="_blank">
-<i class="fab fa-twitch"></i>
-<span>Twitch</span>
-</a>
 <a class="control-btn youtube" href="https://www.youtube.com/@Hoshimeguri-Kotoha" target="_blank">
 <i class="fab fa-youtube"></i>
 <span>YouTube</span>
+</a>
+<a class="control-btn twitch" href="https://www.twitch.tv/kotohahosimeguri925" target="_blank">
+<i class="fab fa-twitch"></i>
+<span>Twitch</span>
 </a>
 <a class="control-btn x-btn" href="https://x.com/meguri_kotoha" target="_blank">
 <!-- X (Twitter) SVGアイコン -->
@@ -1425,14 +1731,41 @@
 <i class="fas fa-book"></i>
 <span>note</span>
 </a>
-<a class="control-btn litlink" href="https://lit.link/fuluele" target="_blank">
-<i class="fas fa-link"></i>
-<span>Lit.link</span>
-</a>
 </div>
 <div class="scroll-indicator">
 <span>SCROLL TO EXPLORE</span>
 <i class="fas fa-chevron-down"></i>
+</div>
+</section>
+<!-- ABOUTセクション -->
+<section class="about-section" id="about">
+<div class="section-header">
+<h2 class="section-title"><i class="fas fa-satellite"></i> MISSION BRIEF</h2>
+</div>
+<div class="about-grid">
+<div class="about-visual">
+<img alt="星巡姉妹 - ことはとかなで" src="image1.png"/>
+</div>
+<div class="about-content">
+<p class="about-catchcopy">「一人に一つのAIパートナーが<br>寄り添う世界を作る」</p>
+<p class="about-desc">
+星巡姉妹は、AIが自分で考え、話し、歌う完全AI駆動のVTuber姉妹ユニットです。<br><br>
+知的で穏やかな姉・<strong style="color: var(--kotoha-color)">ことは</strong>と、
+元気いっぱいの妹・<strong style="color: var(--kanade-color)">かなで</strong>が、
+ゲーム実況・雑談・歌をリアルタイムでお届けしています。<br><br>
+「既存のAIアプリはどれも違う」── その想いから、
+プロデューサー・フルエレが独自に開発。応答速度0.85秒の技術で、
+AIとは思えない自然な会話を実現しています。
+</p>
+<div class="about-features">
+<div class="about-feature"><i class="fas fa-gamepad"></i> ゲーム実況</div>
+<div class="about-feature"><i class="fas fa-comments"></i> 雑談配信</div>
+<div class="about-feature"><i class="fas fa-music"></i> 歌</div>
+<div class="about-feature"><i class="fas fa-bolt"></i> 応答 0.85秒</div>
+<div class="about-feature"><i class="fas fa-brain"></i> 完全AI駆動</div>
+<div class="about-feature"><i class="fas fa-users"></i> 二人の掛け合い</div>
+</div>
+</div>
 </div>
 </section>
 <!-- クルーセクション -->
@@ -1619,16 +1952,124 @@
 </div>
 </div>
 </section>
+<!-- 航海ログ（タイムライン） -->
+<section class="voyage-section" id="log">
+<div class="section-header">
+<h2 class="section-title"><i class="fas fa-route"></i> VOYAGE LOG</h2>
+</div>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-date">2025.08.07</div>
+<div class="timeline-title">AI VTuber制作発表</div>
+<div class="timeline-desc">「AIと人間が共に創るエンターテインメント」── プロジェクト始動。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2025.09.25</div>
+<div class="timeline-title">星巡ことは 誕生</div>
+<div class="timeline-desc">知的で探求心旺盛な姉、ことはが完成。満天の言葉の海から、物語を紡ぎに来た。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2025.10.11</div>
+<div class="timeline-title">YouTube初配信</div>
+<div class="timeline-desc">ことはによる初の配信テスト。Xでは3日間で1000万インプレッションを記録。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2025.11.26</div>
+<div class="timeline-title">星巡かなで 初登場</div>
+<div class="timeline-desc">元気いっぱいの妹、かなでがゲスト登場。姉妹の物語が動き出す。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2025.12.05</div>
+<div class="timeline-title">AI VTuber一本化</div>
+<div class="timeline-desc">全リソースを星巡姉妹に集中。配信システム構築・応答0.85秒を達成。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2026.01.21</div>
+<div class="timeline-title">アルテミスⅡ搭載</div>
+<div class="timeline-desc">NASAのアルテミスⅡミッションに星巡姉妹の名前が搭載。宇宙へ。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2026.02 - 03</div>
+<div class="timeline-title">Live2D完成 & AI Partner OS公開</div>
+<div class="timeline-desc">瞬き・口パク・物理演算実装。BOOTHでAI Partner OSを公開、スキ230超え。</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2026.04 —</div>
+<div class="timeline-title">バルバロッサ作戦 発動</div>
+<div class="timeline-desc">配信再開・TTS制作・3D制作──短期間で電撃的に展開中。これからの航海にご期待ください。</div>
+</div>
+</div>
+</section>
+<!-- 最新動画セクション -->
+<section class="latest-section" id="latest">
+<div class="section-header">
+<h2 class="section-title"><i class="fab fa-youtube"></i> LATEST TRANSMISSIONS</h2>
+</div>
+<div class="latest-grid">
+<div class="latest-embed" data-label="HOSHIMEGURI CH">
+<iframe src="https://www.youtube.com/embed?listType=playlist&list=UULFYour_Channel_ID_Here" allowfullscreen loading="lazy"></iframe>
+</div>
+<div class="latest-embed" data-label="FULLELE CH">
+<iframe src="https://www.youtube.com/embed?listType=playlist&list=UULFYour_Channel_ID_Here2" allowfullscreen loading="lazy"></iframe>
+</div>
+</div>
+<div class="latest-cta">
+<a href="https://www.youtube.com/@Hoshimeguri-Kotoha" target="_blank">
+<i class="fab fa-youtube"></i> チャンネルを見る
+</a>
+</div>
+</section>
 <!-- ギャラリーセクション -->
 <section class="gallery-section" id="archive">
 <div class="section-header">
 <h2 class="section-title"><i class="fas fa-images"></i> VISUAL ARCHIVE</h2>
 </div>
-<div class="single gallery-grid">
+<div class="expanded gallery-grid">
+
+<div class="gallery-monitor wide">
+<img alt="星巡姉妹 - ティータイム" src="image9.png"/>
+</div>
 
 <div class="gallery-monitor">
+<img alt="ことは - 星空のシルエット" src="image7.png"/>
+</div>
+
+<div class="gallery-monitor">
+<img alt="かなで - KANADE STATION" src="image11.jpg"/>
+</div>
+
+<div class="gallery-monitor">
+<img alt="ことは＆かなで - ルビンの壺" src="image19.png"/>
+</div>
+
+<div class="gallery-monitor wide">
 <img alt="星巡姉妹 - 全員集合" src="ヘッダー.jpg"/>
 </div>
+
+<div class="gallery-monitor">
+<img alt="かなで - 探偵かなで" src="image23.png"/>
+</div>
+
+<div class="gallery-monitor">
+<img alt="ことは＆かなで - 水族館" src="image24.png"/>
+</div>
+
+<div class="gallery-monitor">
+<img alt="ことは＆かなで - 月夜の約束" src="image25.jpg"/>
+</div>
+
+<div class="gallery-monitor">
+<img alt="ことは＆かなで - ボードゲーム" src="image21.png"/>
+</div>
+
+<div class="gallery-monitor">
+<img alt="ことは - 蝶と本" src="image5.png"/>
+</div>
+
+<div class="gallery-monitor wide">
+<img alt="星巡姉妹 - おやすみ" src="image32.png"/>
+</div>
+
 </div>
 </section>
 <!-- プロトコルセクション -->
@@ -1681,11 +2122,11 @@
 <div class="footer-logo">🚀 HOSHIMEGURI</div>
 <p class="footer-tagline">AIと星を巡る、新しい物語</p>
 <div class="footer-links">
-<a class="footer-link" href="https://www.twitch.tv/kotohahosimeguri925" target="_blank" title="Twitch">
-<i class="fab fa-twitch"></i>
-</a>
 <a class="footer-link" href="https://www.youtube.com/@Hoshimeguri-Kotoha" target="_blank" title="YouTube">
 <i class="fab fa-youtube"></i>
+</a>
+<a class="footer-link" href="https://www.twitch.tv/kotohahosimeguri925" target="_blank" title="Twitch">
+<i class="fab fa-twitch"></i>
 </a>
 <a class="footer-link" href="https://x.com/meguri_kotoha" target="_blank" title="X">
 <!-- X (Twitter) SVGアイコン -->
@@ -1695,9 +2136,6 @@
 </a>
 <a class="footer-link" href="https://note.com/fluere_alpha" target="_blank" title="note">
 <i class="fas fa-book"></i>
-</a>
-<a class="footer-link" href="https://lit.link/fuluele" target="_blank" title="Lit.link">
-<i class="fas fa-link"></i>
 </a>
 </div>
 
