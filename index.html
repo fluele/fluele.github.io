@@ -2264,12 +2264,12 @@
             }
             
             spawnShootingStar() {
-                if (Math.random() < 0.003 && this.shootingStars.length < 2) {
+                if (Math.random() < 0.012 && this.shootingStars.length < 4) {
                     this.shootingStars.push({
-                        x: Math.random() * this.canvas.width * 0.8,
-                        y: Math.random() * this.canvas.height * 0.5,
-                        length: Math.random() * 80 + 40,
-                        speed: Math.random() * 6 + 4,
+                        x: Math.random() * this.canvas.width * 0.7,
+                        y: Math.random() * this.canvas.height * 0.4,
+                        length: Math.random() * 150 + 80,
+                        speed: Math.random() * 8 + 6,
                         angle: Math.PI / 4 + (Math.random() - 0.5) * 0.3,
                         opacity: 1,
                         life: 0
@@ -2282,7 +2282,7 @@
                     ss.x += Math.cos(ss.angle) * ss.speed;
                     ss.y += Math.sin(ss.angle) * ss.speed;
                     ss.life++;
-                    ss.opacity = Math.max(0, 1 - ss.life / 60);
+                    ss.opacity = Math.max(0, 1 - ss.life / 80);
                     
                     if (ss.opacity <= 0 || ss.x > this.canvas.width || ss.y > this.canvas.height) {
                         this.shootingStars.splice(index, 1);
@@ -2294,19 +2294,25 @@
                     
                     const gradient = this.ctx.createLinearGradient(ss.x, ss.y, tailX, tailY);
                     gradient.addColorStop(0, `rgba(255, 255, 255, ${ss.opacity})`);
-                    gradient.addColorStop(0.3, `rgba(0, 255, 255, ${ss.opacity * 0.6})`);
+                    gradient.addColorStop(0.2, `rgba(200, 255, 255, ${ss.opacity * 0.8})`);
+                    gradient.addColorStop(0.5, `rgba(0, 255, 255, ${ss.opacity * 0.4})`);
                     gradient.addColorStop(1, `rgba(0, 255, 255, 0)`);
                     
                     this.ctx.beginPath();
                     this.ctx.moveTo(ss.x, ss.y);
                     this.ctx.lineTo(tailX, tailY);
                     this.ctx.strokeStyle = gradient;
-                    this.ctx.lineWidth = 2;
+                    this.ctx.lineWidth = 3;
                     this.ctx.stroke();
                     
                     this.ctx.beginPath();
-                    this.ctx.arc(ss.x, ss.y, 2, 0, Math.PI * 2);
+                    this.ctx.arc(ss.x, ss.y, 3, 0, Math.PI * 2);
                     this.ctx.fillStyle = `rgba(255, 255, 255, ${ss.opacity})`;
+                    this.ctx.fill();
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(ss.x, ss.y, 8, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(0, 255, 255, ${ss.opacity * 0.3})`;
                     this.ctx.fill();
                 });
             }
