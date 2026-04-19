@@ -569,6 +569,24 @@
     color: #000000;
 }
 
+.control-btn.booth {
+    border-color: #fc4d50;
+    color: #fc4d50;
+}
+.control-btn.booth i,
+.control-btn.booth span {
+    color: #fc4d50;
+}
+
+.control-btn.booth:hover {
+    background: #fc4d50;
+    box-shadow: 0 5px 20px rgba(252, 77, 80, 0.5);
+}
+.control-btn.booth:hover i,
+.control-btn.booth:hover span {
+    color: #000000;
+}
+
 .control-btn.litlink:hover {
     background: #00e5ff;
     box-shadow: 0 5px 20px rgba(0, 229, 255, 0.5);
@@ -1684,9 +1702,10 @@
 <a class="panel-button" href="https://note.com/fluere_alpha" target="_blank" title="note">
 <i class="fas fa-book"></i>
 </a>
+<a class="panel-button" href="https://fluele.booth.pm/" target="_blank" title="BOOTH">
+<i class="fas fa-store"></i>
+</a>
 </div>
-
-<!-- トップに戻るボタン -->
 <button aria-label="ブリッジに戻る" class="back-to-bridge" id="backToTop">
 <i class="fas fa-chevron-up"></i>
 </button>
@@ -1730,6 +1749,10 @@
 <a class="control-btn note" href="https://note.com/fluere_alpha" target="_blank">
 <i class="fas fa-book"></i>
 <span>note</span>
+</a>
+<a class="control-btn booth" href="https://fluele.booth.pm/" target="_blank">
+<i class="fas fa-store"></i>
+<span>BOOTH</span>
 </a>
 </div>
 <div class="scroll-indicator">
@@ -2192,9 +2215,10 @@
 <a class="footer-link" href="https://note.com/fluere_alpha" target="_blank" title="note">
 <i class="fas fa-book"></i>
 </a>
+<a class="footer-link" href="https://fluele.booth.pm/" target="_blank" title="BOOTH">
+<i class="fas fa-store"></i>
+</a>
 </div>
-
-<div class="footer-credits">
 音声合成：Style-Bert-VITS2<br>
 音声素材：<a href="https://amitaro.net/" target="_blank" rel="noopener noreferrer">あみたろの声素材工房</a>（https://amitaro.net/）<br>
 （使用モデル：amitaro / koharune-ami）
@@ -2211,6 +2235,7 @@
                 this.canvas = document.getElementById('starfield');
                 this.ctx = this.canvas.getContext('2d');
                 this.stars = [];
+                this.shootingStars = [];
                 this.scrollY = 0;
                 this.init();
                 this.animate();
@@ -2236,6 +2261,54 @@
                         layer: Math.random() < 0.33 ? 0.1 : Math.random() < 0.5 ? 0.3 : 0.5
                     });
                 }
+            }
+            
+            spawnShootingStar() {
+                if (Math.random() < 0.003 && this.shootingStars.length < 2) {
+                    this.shootingStars.push({
+                        x: Math.random() * this.canvas.width * 0.8,
+                        y: Math.random() * this.canvas.height * 0.5,
+                        length: Math.random() * 80 + 40,
+                        speed: Math.random() * 6 + 4,
+                        angle: Math.PI / 4 + (Math.random() - 0.5) * 0.3,
+                        opacity: 1,
+                        life: 0
+                    });
+                }
+            }
+            
+            drawShootingStars() {
+                this.shootingStars.forEach((ss, index) => {
+                    ss.x += Math.cos(ss.angle) * ss.speed;
+                    ss.y += Math.sin(ss.angle) * ss.speed;
+                    ss.life++;
+                    ss.opacity = Math.max(0, 1 - ss.life / 60);
+                    
+                    if (ss.opacity <= 0 || ss.x > this.canvas.width || ss.y > this.canvas.height) {
+                        this.shootingStars.splice(index, 1);
+                        return;
+                    }
+                    
+                    const tailX = ss.x - Math.cos(ss.angle) * ss.length;
+                    const tailY = ss.y - Math.sin(ss.angle) * ss.length;
+                    
+                    const gradient = this.ctx.createLinearGradient(ss.x, ss.y, tailX, tailY);
+                    gradient.addColorStop(0, `rgba(255, 255, 255, ${ss.opacity})`);
+                    gradient.addColorStop(0.3, `rgba(0, 255, 255, ${ss.opacity * 0.6})`);
+                    gradient.addColorStop(1, `rgba(0, 255, 255, 0)`);
+                    
+                    this.ctx.beginPath();
+                    this.ctx.moveTo(ss.x, ss.y);
+                    this.ctx.lineTo(tailX, tailY);
+                    this.ctx.strokeStyle = gradient;
+                    this.ctx.lineWidth = 2;
+                    this.ctx.stroke();
+                    
+                    this.ctx.beginPath();
+                    this.ctx.arc(ss.x, ss.y, 2, 0, Math.PI * 2);
+                    this.ctx.fillStyle = `rgba(255, 255, 255, ${ss.opacity})`;
+                    this.ctx.fill();
+                });
             }
             
             animate() {
@@ -2264,6 +2337,9 @@
                         this.ctx.fill();
                     }
                 });
+                
+                this.spawnShootingStar();
+                this.drawShootingStars();
                 
                 requestAnimationFrame(() => this.animate());
             }
